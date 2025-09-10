@@ -1,0 +1,14 @@
+:80 {
+	# Habilitar compresión gzip para un mejor rendimiento
+	encode zstd gzip
+
+	# Servir la API como un proxy reverso al servicio de backend.
+	# Caddy se encargará de la resolución de 'backend' a la IP interna del contenedor.
+	reverse_proxy /api/* backend:3000
+
+	header Cache-Control "max-age=0, no-cache, must-revalidate"
+
+	# Servir los archivos estáticos del frontend desde el directorio raíz.
+	root * /project/frontend
+	file_server
+}

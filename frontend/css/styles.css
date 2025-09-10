@@ -1,0 +1,250 @@
+/*
+ * MODERN STYLES V3
+ */
+
+/* 1. FONT & ROOT VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    /* Redefinición de colores base de Ionic para el tema CLARO */
+    --ion-color-primary: #6366f1;
+    --ion-color-primary-rgb: 99, 102, 241;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #575ae0;
+    --ion-color-primary-tint: #7376e2;
+
+    --ion-color-success: #22c55e;
+    --ion-color-warning: #f59e0b;
+    --ion-color-danger: #ef4444;
+
+    --ion-background-color: #f8f9fa;
+    --ion-background-color-rgb: 248,249,250;
+
+    --ion-text-color: #212529;
+    --ion-text-color-rgb: 33,37,41;
+
+    --ion-border-color: #dee2e6;
+    --ion-item-border-color: var(--ion-border-color);
+
+    --ion-card-background: #ffffff;
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-tab-bar-background: var(--ion-card-background);
+
+    /* Variables personalizadas */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --border-radius: 16px;
+    --card-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    --card-hover-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+/* Redefinición de colores base de Ionic para el tema OSCURO */
+html.ion-palette-dark {
+    --ion-color-primary: #818cf8;
+    --ion-color-primary-rgb: 129, 140, 248;
+    --ion-color-primary-contrast: #111827;
+    --ion-color-primary-contrast-rgb: 17, 24, 39;
+    --ion-color-primary-shade: #717ce1;
+    --ion-color-primary-tint: #8d98e3;
+
+    --ion-background-color: #111827;
+    --ion-background-color-rgb: 17,24,39;
+
+    --ion-text-color: #f9fafb;
+    --ion-text-color-rgb: 249,250,251;
+
+    --ion-border-color: #374151;
+    --ion-item-border-color: var(--ion-border-color);
+
+    --ion-card-background: #1f2937;
+    --ion-toolbar-background: var(--ion-card-background);
+    --ion-tab-bar-background: #293548;
+}
+
+
+/* 3. GLOBAL STYLES */
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+ion-header {
+    box-shadow: var(--card-shadow);
+}
+
+ion-header ion-toolbar {
+    --border-width: 0;
+}
+
+ion-content {
+    --padding-start: var(--spacing-md);
+    --padding-end: var(--spacing-md);
+    --padding-top: var(--spacing-md);
+    --padding-bottom: var(--spacing-md);
+}
+
+/* 4. CARD STYLES */
+@keyframes card-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+ion-card {
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    margin: 0 0 var(--spacing-lg) 0 !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: card-fade-in 0.5s ease-out forwards;
+}
+
+ion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+ion-card-header {
+    padding-bottom: var(--spacing-sm);
+}
+
+ion-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* 5. BUTTONS & INPUTS */
+ion-button {
+    --border-radius: 25px;
+    --box-shadow: none;
+    font-weight: 600;
+    text-transform: none;
+}
+
+ion-button.ion-color-primary {
+     --box-shadow: 0 4px 10px -4px var(--ion-color-primary);
+}
+
+ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --background: transparent;
+    --highlight-height: 2px;
+}
+
+ion-input, ion-select {
+    --background: var(--ion-background-color);
+    --padding-start: 16px;
+    --padding-end: 16px;
+    border-radius: 25px;
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--ion-border-color);
+    transition: border-color 0.3s;
+}
+
+ion-input:hover, ion-select:hover {
+    border-color: var(--ion-color-primary);
+}
+
+
+/* 6. TAB BAR */
+ion-tab-bar {
+    border-radius: 30px 30px 0 0;
+    margin: 0 10px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+ion-tab-button {
+    --color: var(--ion-text-color);
+    --color-selected: var(--ion-color-primary);
+    font-weight: 500;
+}
+
+/* 7. CONNECTION STATUS BAR */
+#connection-status {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+#connection-status.offline,
+#connection-status.online {
+    max-height: 40px;
+    padding: 8px 0;
+}
+
+#connection-status.offline {
+    background-color: var(--ion-color-danger);
+}
+
+#connection-status.online {
+    background-color: var(--ion-color-success);
+}
+
+/* 8. MISC & ANIMATIONS */
+@keyframes item-fade-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+ion-list ion-item {
+  animation: item-fade-in 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered animation for list items */
+ion-list ion-item:nth-child(1) { animation-delay: 0.1s; }
+ion-list ion-item:nth-child(2) { animation-delay: 0.15s; }
+ion-list ion-item:nth-child(3) { animation-delay: 0.2s; }
+ion-list ion-item:nth-child(4) { animation-delay: 0.25s; }
+ion-list ion-item:nth-child(5) { animation-delay: 0.3s; }
+/* ... add more if needed */
+
+
+html, body, ion-app, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app > * {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+ion-content {
+    position: relative;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--ion-text-color);
+    opacity: 0.7;
+}
+.empty-state ion-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--ion-color-primary);
+}
+.empty-state h3 {
+    font-weight: 600;
+}

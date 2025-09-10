@@ -1,0 +1,53 @@
+{
+    "name": "Divisor de Gastos",
+    "short_name": "Gastos",
+    "description": "Una aplicación para dividir gastos entre amigos.",
+    "id": "/",
+    "start_url": ".",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay"],
+    "background_color": "#ffffff",
+    "theme_color": "#3880ff",
+    "icons": [
+        {
+            "src": "images/icons/icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "images/screenshots/1.jpg",
+            "sizes": "1080x1920",
+            "type": "image/jpeg",
+            "form_factor": "wide",
+            "label": "Home screen showing main navigation and featured content"
+        },
+        {
+            "src": "images/screenshots/2.jpg",
+            "sizes": "1080x1920",
+            "type": "image/jpeg",
+            "form_factor": "wide",
+            "label": "Dashboard view displaying key metrics"
+        },
+        {
+            "src": "images/screenshots/3.jpg",
+            "sizes": "1080x1920",
+            "type": "image/jpeg",
+            "form_factor": "wide",
+            "label": "Dashboard view displaying key metrics"
+        },
+        {
+            "src": "images/screenshots/4.jpg",
+            "sizes": "1080x1920",
+            "type": "image/jpeg",
+            "form_factor": "wide",
+            "label": "Dashboard view displaying key metrics"
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+services:
+  backend:
+    build: ./backend
+    container_name: gastos-backend
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/gastos_db
+      VAPID_PUBLIC_KEY: "BN_qigka1jqTR4FayOiRx0ej9vd539YIiLtqr7ZNtQ5KpJvUKnHBsskfonHPKCE57s5jB743G7nqVUsX6lcFXVQ"
+      VAPID_PRIVATE_KEY: "B800rmCgy4KpHEWFhEbyjm8QGt7mOTY8okBvI63KsJM"
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: gastos-db
+    environment:
+      POSTGRES_DB: gastos_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  frontend:
+    build: ./frontend
+    container_name: gastos-frontend
+    environment:
+      CF_API_TOKEN: xTaLnpkaC4sOVgWoV7XKkJ3wzMPwNV4WwKmzLfqN
+      GEMINI_API_KEY: AIzaSyBdhDz6geq1uOaV0Q8WUhO1qeGSEubXtwA
+    volumes:
+      - ./:/project
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - backend
